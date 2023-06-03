@@ -1,0 +1,51 @@
+#Sử dụng lệnh Find để tìm kiếm một file trong Linux.
+1. Tìm kiếm chính xác file.
+- Tìm kiếm file wp-config.php của website WordPress.
+Ex: find / -name wp-config.php      #find: lệnh tìm, /: đường dẫn thư mục, -name: option tìm tên, wp-config.php: File cần tìm.
+2. Tìm kiếm hàng loạt file, folder.
+- Tìm kiếm file theo định dạng như *.php, *.html, *.txt … Hoặc có thể phân loại theo kiểu file hay thư mục bằng cách thêm option -type d cho thư mục và -type f đối với file.
+- Tìm kiếm file có định dạng đuôi là *.zip trong thư thư mục /home/linuxcanban.com/
+Ex: find /home/linuxcanban.com/ -name *.zip -type f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
