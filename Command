@@ -54,11 +54,30 @@ httpd -v
     - /var/log/httpd/error_log : file chứa log lỗi dịch vụ.
     - /var/log/httpd/access_log : file chứa log đăng nhập.
  
+### Cấu hình Basic Authentication ###
 
+1. Mô hình
+https://i.imgur.com/gPapafe.png 
 
-
-
-
+2. Các bước thực hiện.
+B1: Cài đặt dịch vụ httpd.
+B2: Cấu hình nội dung trang web (file index.html) 
+B3: Khởi động dịch vụ httpd.
+B4: Cấu hình Firewalld cho phép dịch vụ http (để các máy Client có thể truy cập) :
+B5: Tạo user truy nhập httpd bằng lệnh htpasswd:
+htpasswd -c /etc/httpd/conf/pwfile admin  [-c: tùy chọn tạo 1 file mới chứa thông tin user (file /etc/httpd/conf/pwfile)] [admin: tên user]
+New password :
+Re-type new password :
+B6: Tạo file cấu hình auth_basic.conf:
+vi /etc/httpd/conf.d/auth_basic.conf
+Thêm vào nội dung sau:
+<Directory /var/www/html/>
+AuthType Basic
+AuthName "Basic Authentication"
+AuthUserFile /etc/httpd/conf/pwfile
+Require valid-user
+</Directory>
+B7: Khởi động lại dịch vụ httpd:
 
 
 
