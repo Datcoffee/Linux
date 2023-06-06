@@ -1,4 +1,5 @@
-#Sử dụng lệnh Find để tìm kiếm một file trong Linux.
+### Sử dụng lệnh Find để tìm kiếm một file trong Linux ###
+
 1. Tìm kiếm chính xác file.
 - Tìm kiếm file wp-config.php của website WordPress.
 Ex: find / -name wp-config.php      #find: lệnh tìm, /: đường dẫn thư mục, -name: option tìm tên, wp-config.php: File cần tìm.
@@ -7,16 +8,52 @@ Ex: find / -name wp-config.php      #find: lệnh tìm, /: đường dẫn thư 
 - Tìm kiếm file có định dạng đuôi là *.zip trong thư thư mục /home/linuxcanban.com/
 Ex: find /home/linuxcanban.com/ -name *.zip -type f
 
+### Hướng dẫn cài đặt PHP 7.x trên CentOS_7 ###
 
+1. Cài đặt repo chứa PHP 7.x
+sudo yum install -y epel-release yum-utils
+sudo yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
+2. Cài đặt PHP 7.x
+2.1. Cài đặt PHP 7.3
+- Kích hoạt PHP 7.3 khi sử dụng repository REMI.
+yum-config-manager --enable remi-php73
+- Cài đặt PHP 7.3 và các gói cần thiết.
+yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd
+- Kiểm tra lại phiên bản PHP sau khi đã cài xong.
+php -v
 
+###Các lệnh cơ bản về Apache trên CentOS 7###
+1) Cài đặt Apache.
+B1: Cài đặt repo Epel: yum install -y epel-release.
+B2: Cài đặt gói httpd: yum install -y httpd
+B3: Cấu hình Firewalld Cho phép dịch vụ httpd:
+firewall-cmd --zone=public --permanent --add-service=http
+firewall-cmd --reload
+B4: Khởi động dịch vụ httpd và cấu hình tự khởi động khi boot:
+systemctl start httpd
+systemctl enable httpd
+B5: Kiểm tra trạng thái dịch vụ httpd:
+systemctl status httpd
 
+2) Gỡ cài đặt Apache
+yum remove httpd -y
 
+3) Kiểm tra version Apache đã cài
+httpd -v
 
-
-
-
-
+### Cài đặt Apache từ Source ###
+### Các file/thư mục quan trọng của Apache ###
++ /var/html/ : là thư mục gốc chứa các file htm , html , images …. tạo thành nội dung cho trang web
++ /etc/httpd/ : thư mục chứa tất cả các file cấu hình cho Apache:
+    - /etc/httpd/conf/httpd.conf : file cấu hình chính của dịch vụ Apache.
+    - /etc/httpd/conf.d/ : thư mục chứa các cấu hình bổ sung cho Apache.
+          + /etc/httpd/conf.d/vhost.conf : file cấu hình virtual host
+          + ...
+    - /etc/httpd/conf.modules.d/ : thư mục chứa file cấu hình của các modules.
+    - /var/log/httpd/error_log : file chứa log lỗi dịch vụ.
+    - /var/log/httpd/access_log : file chứa log đăng nhập.
+ 
 
 
 
