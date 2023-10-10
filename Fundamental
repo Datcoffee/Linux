@@ -1,1 +1,8 @@
+declare var1=33
+        var2=42
+        var3=/var/tmp
+
+echo This is $var1 students
+cd $var3
+
 
